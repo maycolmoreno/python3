@@ -1,0 +1,79 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block head%}
+<head>
+<title>{% block title %} Listado Usuario {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>QAdministracion Fuego Santo</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.png' %}">
+    
+{% endblock head %}
+</head>
+
+<body>
+{% block body %}
+
+    {% block header %}
+    
+        {% block contenido %}
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="active-member">
+                                    <div class="table-responsive">
+                                        <table class="table table-xs mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cedula</th>
+                                                    <th>Nombre</th>
+                                                    <th>Apellido</th>
+                                                    <th>barrio</th>
+                                                    <th>e_civil</th>
+                                                    <th>user</th>
+                                                    <th>Accion</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% if object_list %}
+                                            {% for persona in object_list %}
+                                                <tr>
+                                                    <td>{{persona.cedula}}</td>
+                                                    <td>{{persona.nombre}} </td>
+                                                    <td>{{persona.apellido}}</td>
+                                                    <td>{{persona.barrio}}</td>
+                                                    <td>{{persona.e_civil}}</td>
+                                                    <td>{{persona.user}}</td>
+							<td> <a  href="{% url 'persona_edit' persona.id_persona  %}" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" >
+							Modificar <a  href="{% url 'register' %}" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" >
+							Registrarte</td>
+                                                    <td>  </td>
+                                                </tr>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                {% comment %} {% endif %} {% endcomment %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+
+                
+
+                
+        </div>
+        {% endblock contenido %}
+        
+    </div>
+{% endblock header %}
+{% endblock body %} 

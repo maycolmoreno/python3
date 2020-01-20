@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+{%load static %}
+{% block head %}
+{%block title%} Creacionde usuarios {% endblock title %}
+    {% block estilo %}
+
+    {% endblock estilo %}
+{% block js %}
+
+{% endblock js %}
+{% endblock head %}
+{% block body %}
+{% block header %}
+
+{% block contenido %}
+            
+<h1> Formula de usario </h1>
+<form method = "POST" action= ""> {% csrf_token %}
+{{ form.as_p }}
+<input type='submit' value = 'Registrame'/>
+</form>
+{% endblock contenido %}
+{% endblock header %}
+{% endblock body %} 

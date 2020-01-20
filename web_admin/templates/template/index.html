@@ -1,0 +1,132 @@
+{% extends 'template/base.html' %}
+{% load static %}
+{% block head%}
+
+{% block title %}
+{{user.username|capfirst}}
+{% endblock title%}
+
+{% endblock head %}
+
+{% block estilo %}
+{% endblock estilo %}
+{% block js %}
+{% endblock js %}
+
+
+{% block body %}
+
+    {% block nav %}
+    {% endblock nav %}
+    {% block header %}
+    <header>
+        <div id="carousel-header" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators hidden-xs">
+                <li data-target="#carousel-header" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-header" data-slide-to="1"></li>
+                <li data-target="#carousel-header" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive img-full" src="http://placehold.it/1900x800" alt="">
+                    <div class="carousel-caption">
+                        <h3>Slide 1</h3>
+                        <p>Description for Slide 1</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive img-full" src="http://placehold.it/1900x800" alt="">
+                    <div class="carousel-caption">
+                        <h3>Slide 2</h3>
+                        <p>Description for Slide 2</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive img-full" src="http://placehold.it/1900x800" alt="">
+                    <div class="carousel-caption">
+                        <h3>Slide 3</h3>
+                        <p>Description for Slide 3</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-header" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-header" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+    </header>
+    {% endblock header %}
+    {% block content %}
+    <div class="sec-alternative" style="background-image: url(img/odd_background.png)">
+        <div class="container cta">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>
+                        This could be your <span>Website</span>
+                        <br/>
+                        <span>Check out all layouts and features</span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="cta-button">
+                        <a href="{% url 'auth_login' %}" class="btn btn-primary">Registrate Ahora</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+    {% block contenido1 %}
+    <section class="page-section" id="sliders">
+        <div class="container">
+            <div class="row margin-bottom-50">
+                <div class="col-md-12 text-center">
+                    <h1 class="title-section"><span class="title-regular">More <strong>Headers?</strong></span><br/>Click on the Demos below.</h1>
+                    <hr class="title-underline-center">
+                    <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        <br/>sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+                </div>
+            </div>
+            <div class="row margin-bottom-60">
+                <div class="col-sm-4">
+                    <h2>Hero Image</h2>
+                    <hr class="title-underline margin-bottom-15">
+                    <a href="index-header-hero.html"><img class="img-thumbnail img-responsive margin-bottom-15" src="http://placehold.it/690x290" alt="" /></a>
+                    <p><a href="index-header-hero.html" class="btn btn-md btn-primary">Open Hero Header</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Product Feature</h2>
+                    <hr class="title-underline margin-bottom-15">
+                    <a href="index-header-product.html"><img class="img-thumbnail img-responsive margin-bottom-15" src="http://placehold.it/690x290" alt="" /></a>
+                    <p><a href="index-header-product.html" class="btn btn-md btn-primary">Open Product Header</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Video Header</h2>
+                    <hr class="title-underline margin-bottom-15">
+                    <a href="index-header-video.html"><img class="img-thumbnail img-responsive margin-bottom-15" src="http://placehold.it/690x290" alt="" /></a>
+                    <p><a href="index-header-video.html" class="btn btn-md btn-primary">Open Video Header</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Newsletter</h2>
+                    <hr class="title-underline margin-bottom-15">
+                    <a href="index-header-newsletter.html"><img class="img-thumbnail img-responsive margin-bottom-15" src="http://placehold.it/690x290" alt="" /></a>
+                    <p><a href="index-header-newsletter.html" class="btn btn-md btn-primary">Open Newsletter Header</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Classic Carousel</h2>
+                    <hr class="title-underline margin-bottom-15">
+                    <a href="index-header-carousel.html"><img class="img-thumbnail img-responsive margin-bottom-15" src="http://placehold.it/690x290" alt="" /></a>
+                    <p><a href="index-header-carousel.html" class="btn btn-md btn-primary">Open Carousel Header</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock contenido1 %}
+{% endblock body %}

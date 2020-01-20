@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <title>{% block title %} Inicio {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'template/css/normalize.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'template/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'template/bootstrap/css/carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'template/bootstrap/fonts/glyphicons-halflings-regular.eot' %}" rel="stylesheet">
+
+    <!-- Load jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'template/bootstrap/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <script src="{% static 'template/bootstrap/js/ie-emulation-modes-warning.js' %}"></script>
+<!-- Google Fonts - Change if needed -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400italic,400,700,300,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Menu shrinking -->
+    <script type="text/javascript" src="{% static 'template/js/menu.js' %}"></script>
+
+    <!-- Main styles of this template -->
+    <link href="{% static 'template/css/style.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS. Input here your changes -->
+    <link href="{% static 'template/css/custom.css' %}" rel="stylesheet">
+
+{% block head%}
+{% block estilo %}
+{% endblock estilo %}
+{% block js %}
+
+    <!-- Scripts -->
+
+    <!-- Loads Bootstrap Main JS -->
+    <script src="{% static 'template/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'template/bootstrap/js/ie10-viewport-bug-workaround.js' %}"></script>
+{% endblock js %}
+
+    <!-- Scripts -->
+
+    <!-- Loads Bootstrap Main JS -->
+    <script src="{% static 'template/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'template/bootstrap/js/ie10-viewport-bug-workaround.js' %}"></script>
+</head>
+{% endblock head %}
+<body>
+{%include "template/nav.html"%}
+
+{% block body %}
+  {% block nav %}
+{% endblock nav %}
+  {% block header %}
+  {% endblock header %}
+  {% block content %}
+  {% endblock content %}
+  {% block contenido1 %}
+  {% endblock contenido1 %}
+  
+  
+{% endblock body %}
+  {% include "template/footer.html" %}
+
+</body>
+</html>
+

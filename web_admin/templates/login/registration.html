@@ -1,0 +1,182 @@
+{% extends 'login/base.html' %}
+{% load static %}
+<html lang="es">
+{% block head%}
+
+<head>
+	<title>{% block title %} Inicio de Sesion {% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block estilo %}
+	<link rel="icon" type="image/png" href="{% static 'login/css/styles.css' %}" />
+	<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css"
+		href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css"
+		href="{% static 'login/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animsition/css/animsition.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/daterangepicker/daterangepicker.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+	{% endblock estilo %}
+
+	{% block js %}
+	<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'login/js/main.js' %}"></script>
+<script>
+	function justNumbers(e) {
+		var keynum = window.event ? window.event.keyCode : e.which;
+		if ((keynum == 10) || (keynum == 13))
+			return true;
+
+		return /\d/.test(String.fromCharCode(keynum));
+	}
+	//Se utiliza para que el campo de texto solo acepte letras
+	function validateMail(idMail) {
+		//Creamos un objeto
+		object = document.getElementById(idMail);
+		valueForm = object.value;
+
+		// Patron para el correo
+		var patron = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+		if (valueForm.search(patron) == 0) {
+			//Mail correcto
+			object.style.color = "#000";
+			return;
+		}
+		//Mail incorrecto
+		object.style.color = "#f00";
+	}
+
+	function validar(e, solicitar) {
+		// Admitir solo letras
+		tecla = (document.all) ? e.keyCode : e.which;
+		if (tecla == 8) return true;
+		patron = /[\D\s]/;
+		te = String.fromCharCode(tecla);
+		if (!patron.test(te)) return false;
+		// No amitir espacios iniciales y convertir 1ª letra a mayúscula
+		txt = solicitar.value;
+		if (txt.length == 0 && te == ' ') return false;
+		if (txt.length == 0 || txt.substr(txt.length - 1, 1) == ' ') {
+			solicitar.value = txt + te.toUpperCase();
+			return false;
+		}
+	}
+
+	$("#cedula").autocomplete({
+		minLength: 3,
+		source: "/solo_url/"
+	});
+
+
+</script>
+	{% endblock js %}
+	{% endblock head%}
+	{% block body %}
+
+<body style="background-color: #999999;">
+	{% block contenido1 %}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="login100-more" style="background-image: url('{% static 'login/images/bg-01.jpg' %}');"></div>
+
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+				<form method="POST" action=".">
+					
+					<span class="login100-form-title p-b-59">
+						Registrarse
+					</span>
+					{% csrf_token %}
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Nombre<i class="glyphicon glyphicon-user"></i></span>
+						<input class="input100" id="nombre" type="text" name="nombre" maxlength="50" onkeypress="return validar(event,this)" placeholder="Ejem: Maria" />
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Apellido</span>
+						<input class="input100" id="apellido" type="text" name="apellido" maxlength="50" onkeypress="return validar(event,this)" placeholder="Ejem: Perez"/>
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Nombre de Usuario</span>
+						<input class="input100" id="cedula" type="text" name="username" maxlength="10" placeholder="123456789" />
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Correo<i class="glyphicon glyphicon-user"></i></span>
+						<input class="input100" id="nombre" type="text" name="email" maxlength="50"  placeholder="Ejem: maria@mail.com" />
+						<span class="focus-input100"></span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Contraseña</span>
+						<input class="input100" id="apellido" type="password" name="password1" maxlength="50" placeholder="**********"/>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Confirmar Contraseña</span>
+						<input class="input100" id="password" type="password" name="password2" maxlength="50" placeholder="**********"/>
+						<span class="focus-input100"></span>
+					</div>
+					<!-- ////// -->
+					<input type="hidden" name="id_persona" value="0" />
+					
+					<button class="btn btn-block btn-primary" type="submit"> Guardar</button>
+					
+					<div class='row'>
+						<div class='col-sm-6 col-sm-offset-3 text-align-center'>
+							<p>Ya tienes cuenta? <a href="{% url 'auth_login' %}"> Iniciar Sesión.</a></p>
+						</div>
+
+
+						<!-- /////// -->
+					<div class="flex-m w-full p-b-33">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								<span class="txt1">
+									I agree to the
+									<a href="#" class="txt2 hov1">
+										Terms of User
+									</a>
+								</span>
+							</label>
+						</div>
+
+
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Sign Up
+							</button>
+						</div>
+
+						<a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+							Sign in
+							<i class="fa fa-long-arrow-right m-l-5"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{% endblock contenido1 %}
+	{% endblock body %}
